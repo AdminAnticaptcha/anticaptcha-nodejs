@@ -98,7 +98,12 @@ var Anticaptcha = function(clientKey) {
                 waitingInterval = normalWaitingInterval;
             }
 
-            console.log('Waiting %s seconds', waitingInterval);
+            if (currentAttempt == 0) {
+                console.log('Waited for %s seconds', waitingInterval);
+            } else {
+                waitingInterval = eval((currentAttempt -1) * 2 + 7);
+                console.log('Waited for %s seconds', waitingInterval)
+            }
 
             var that = this;
 
