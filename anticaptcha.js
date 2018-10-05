@@ -14,7 +14,7 @@ var Anticaptcha = function(clientKey) {
             proxyPort: null,
             proxyLogin: null,
             proxyPassword: null,
-            userAgent: '',
+            userAgent: '',	
             cookies: '',
 
             // FunCaptcha
@@ -52,6 +52,20 @@ var Anticaptcha = function(clientKey) {
                 }
 
                 cb(null, jsonResult.balance, jsonResult);
+            });
+        };
+		
+		this.reportCaptcha = function (taskId) {
+			console.log("reporting", taskId);
+            var postData = {
+                clientKey: this.params.clientKey,
+				taskId: taskId
+            };
+
+            this.jsonPostRequest('reportIncorrectImageCaptcha', postData, function (err, jsonResult) {
+                if (err) {
+                    return cb(err, null, jsonResult);
+                }
             });
         };
 
@@ -296,9 +310,9 @@ var Anticaptcha = function(clientKey) {
                     + (window.location.protocol != 'https:' ? ':' + this.params.port : '')
                     + '/' + methodName,
                     {
-                        method: 'POST',
+                        type: 'POST',
                         data: JSON.stringify(postData),
-                        dataType: 'json',
+                        contentType: "application/json; charset=UTF-8",
                         success: function (jsonResult) {
                             if (jsonResult && jsonResult.errorId) {
                                 return cb(new Error(jsonResult.errorDescription, jsonResult.errorCode), jsonResult);
