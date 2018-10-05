@@ -14,7 +14,7 @@ var Anticaptcha = function(clientKey) {
             proxyPort: null,
             proxyLogin: null,
             proxyPassword: null,
-            userAgent: '',	
+            userAgent: '',
             cookies: '',
 
             // FunCaptcha
@@ -55,11 +55,10 @@ var Anticaptcha = function(clientKey) {
             });
         };
 		
-		this.reportCaptcha = function (taskId) {
-			console.log("reporting", taskId);
+        this.reportCaptcha = function (taskId) {
             var postData = {
                 clientKey: this.params.clientKey,
-				taskId: taskId
+                taskId: taskId
             };
 
             this.jsonPostRequest('reportIncorrectImageCaptcha', postData, function (err, jsonResult) {
