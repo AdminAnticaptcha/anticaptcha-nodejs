@@ -25,6 +25,7 @@ var Anticaptcha = function(clientKey, usePrecaching) {
 
             // FunCaptcha
             websitePublicKey: null,
+            funcaptchaApiJSSubdomain: null,
 
             // GeeTest
             websiteChallenge: null,
@@ -281,8 +282,9 @@ var Anticaptcha = function(clientKey, usePrecaching) {
                     break;
                 case 'FunCaptchaTask':
                     return {
-                        websiteURL:         this.params.websiteUrl,
-                        websitePublicKey:   this.params.websitePublicKey,
+                        websiteURL:                 this.params.websiteUrl,
+                        websitePublicKey:           this.params.websitePublicKey,
+                        funcaptchaApiJSSubdomain:   this.params.funcaptchaApiJSSubdomain,
                         proxyType:          this.params.proxyType,
                         proxyAddress:       this.params.proxyAddress,
                         proxyPort:          this.params.proxyPort,
@@ -294,8 +296,9 @@ var Anticaptcha = function(clientKey, usePrecaching) {
                     break;
                 case 'FunCaptchaTaskProxyless':
                     return {
-                        websiteURL:         this.params.websiteUrl,
-                        websitePublicKey:   this.params.websitePublicKey,
+                        websiteURL:                 this.params.websiteUrl,
+                        websitePublicKey:           this.params.websitePublicKey,
+                        funcaptchaApiJSSubdomain:   this.params.funcaptchaApiJSSubdomain,
                     }
                 case 'GeeTestTask':
                     return {
@@ -507,6 +510,10 @@ var Anticaptcha = function(clientKey, usePrecaching) {
 
         this.setWebsitePublicKey = function (value) {
             this.params.websitePublicKey = value;
+        };
+
+        this.setFuncaptchaApiJSSubdomain = function (value) {
+            this.params.funcaptchaApiJSSubdomain = value;
         };
 
         this.setWebsiteChallenge = function (value) {
