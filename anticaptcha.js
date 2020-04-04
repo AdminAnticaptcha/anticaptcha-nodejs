@@ -28,6 +28,7 @@ var Anticaptcha = function(clientKey) {
             // GeeTest
             websiteChallenge: null,
             geetestApiServerSubdomain: null,
+            geetestGetLib: null,
 
             // image
             phrase: null,
@@ -272,6 +273,7 @@ var Anticaptcha = function(clientKey) {
                         gt:                         this.params.websiteKey,
                         challenge:                  this.params.websiteChallenge,
                         geetestApiServerSubdomain:  this.params.geetestApiServerSubdomain,
+                        geetestGetLib:              this.params.geetestGetLib,
 
                         proxyType:                  this.params.proxyType,
                         proxyAddress:               this.params.proxyAddress,
@@ -288,6 +290,7 @@ var Anticaptcha = function(clientKey) {
                         gt:                         this.params.websiteKey,
                         challenge:                  this.params.websiteChallenge,
                         geetestApiServerSubdomain:  this.params.geetestApiServerSubdomain,
+                        geetestGetLib:              this.params.geetestGetLib,
                     }
                 default: // NoCaptchaTask
                     return {
@@ -448,6 +451,10 @@ var Anticaptcha = function(clientKey) {
 
         this.setGeetestApiServerSubdomain = function (value) {
             this.params.geetestApiServerSubdomain = value;
+        };
+
+        this.setGeetestGetLib = function (value) {
+            this.params.geetestGetLib = value;
         };
 
         this.setProxyType = function (value) {
