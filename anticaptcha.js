@@ -9,6 +9,7 @@ var Anticaptcha = function(clientKey) {
             websiteUrl: null,
             websiteKey: null,
             websiteSToken: null,
+            recaptchaDataSValue: null,
             proxyType: 'http',
             proxyAddress: null,
             proxyPort: null,
@@ -217,7 +218,8 @@ var Anticaptcha = function(clientKey) {
                     return {
                         websiteURL:     this.params.websiteUrl,
                         websiteKey:     this.params.websiteKey,
-                        websiteSToken:  this.params.websiteSToken
+                        websiteSToken:  this.params.websiteSToken,
+                        recaptchaDataSValue:  this.params.recaptchaDataSValue
                     };
                     break;
                 case 'HCaptchaTaskProxyless':
@@ -297,6 +299,7 @@ var Anticaptcha = function(clientKey) {
                         websiteURL:     this.params.websiteUrl,
                         websiteKey:     this.params.websiteKey,
                         websiteSToken:  this.params.websiteSToken,
+                        recaptchaDataSValue:  this.params.recaptchaDataSValue,
                         proxyType:      this.params.proxyType,
                         proxyAddress:   this.params.proxyAddress,
                         proxyPort:      this.params.proxyPort,
@@ -435,6 +438,10 @@ var Anticaptcha = function(clientKey) {
 
         this.setWebsiteSToken = function (value) {
             this.params.websiteSToken = value;
+        };
+
+        this.setRecaptchaDataSValue = function (value) {
+            this.params.recaptchaDataSValue = value;
         };
 
         this.setWebsitePublicKey = function (value) {
