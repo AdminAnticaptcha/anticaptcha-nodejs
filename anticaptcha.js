@@ -312,7 +312,21 @@ var Anticaptcha = function(clientKey) {
 
 
         };
+        
+        this.reportIncorrectImageCaptcha = function (taskId, cb) {
+          var postData = {
+            clientKey: this.params.clientKey,
+            taskId: taskId
+          }
 
+          this.jsonPostRequest('reportIncorrectImageCaptcha', postData, function (err, jsonResult) {
+            if (err) {
+              return cb(err, null, jsonResult);
+            }
+            cb(null, jsonResult);
+          });
+        }
+        
         this.jsonPostRequest = function(methodName, postData, cb) {
             if (typeof process === 'object' && typeof require === 'function') { // NodeJS
                 var http = require('http');
