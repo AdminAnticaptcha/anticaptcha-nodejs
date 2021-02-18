@@ -1,7 +1,7 @@
 var Anticaptcha = function(clientKey, usePrecaching) {
     return new function(clientKey, usePrecaching) {
         usePrecaching = !!usePrecaching; // false by default
-        
+
         this.params = {
             host: 'api.anti-captcha.com',
             port: 80,
@@ -186,7 +186,7 @@ var Anticaptcha = function(clientKey, usePrecaching) {
                 clientKey: this.params.clientKey,
                 taskId: taskId
             };
-            
+
             var waitingInterval;
             if (currentAttempt == 0) {
                 waitingInterval = firstAttemptWaitingInterval;
@@ -281,6 +281,7 @@ var Anticaptcha = function(clientKey, usePrecaching) {
                         websiteKey:     this.params.websiteKey,
                         minScore:       this.params.minScore,
                         pageAction:     this.params.pageAction,
+                        isEnterprise:   this.params.isEnterprise,
                     };
                     break;
                 case 'FunCaptchaTask':
@@ -508,6 +509,10 @@ var Anticaptcha = function(clientKey, usePrecaching) {
 
         this.setPageAction = function (value) {
             this.params.pageAction = value;
+        };
+
+        this.setIsEnterprise = function (value) {
+            this.params.isEnterprise = value;
         };
 
         this.setWebsiteSToken = function (value) {
