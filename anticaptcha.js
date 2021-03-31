@@ -9,6 +9,7 @@ var Anticaptcha = function(clientKey) {
             websiteUrl: null,
             websiteKey: null,
             websiteSToken: null,
+            recaptchaDataSValue: null,
             proxyType: 'http',
             proxyAddress: null,
             proxyPort: null,
@@ -23,10 +24,12 @@ var Anticaptcha = function(clientKey) {
 
             // FunCaptcha
             websitePublicKey: null,
+            funcaptchaApiJSSubdomain: null,
 
             // GeeTest
             websiteChallenge: null,
             geetestApiServerSubdomain: null,
+            geetestGetLib: null,
 
             // image
             phrase: null,
@@ -200,7 +203,8 @@ var Anticaptcha = function(clientKey) {
                     return {
                         websiteURL:     this.params.websiteUrl,
                         websiteKey:     this.params.websiteKey,
-                        websiteSToken:  this.params.websiteSToken
+                        websiteSToken:  this.params.websiteSToken,
+                        recaptchaDataSValue:  this.params.recaptchaDataSValue
                     };
                     break;
                 case 'HCaptchaTaskProxyless':
@@ -232,8 +236,9 @@ var Anticaptcha = function(clientKey) {
                     break;
                 case 'FunCaptchaTask':
                     return {
-                        websiteURL:         this.params.websiteUrl,
-                        websitePublicKey:   this.params.websitePublicKey,
+                        websiteURL:                 this.params.websiteUrl,
+                        websitePublicKey:           this.params.websitePublicKey,
+                        funcaptchaApiJSSubdomain:   this.params.funcaptchaApiJSSubdomain,
                         proxyType:          this.params.proxyType,
                         proxyAddress:       this.params.proxyAddress,
                         proxyPort:          this.params.proxyPort,
@@ -245,8 +250,9 @@ var Anticaptcha = function(clientKey) {
                     break;
                 case 'FunCaptchaTaskProxyless':
                     return {
-                        websiteURL:         this.params.websiteUrl,
-                        websitePublicKey:   this.params.websitePublicKey,
+                        websiteURL:                 this.params.websiteUrl,
+                        websitePublicKey:           this.params.websitePublicKey,
+                        funcaptchaApiJSSubdomain:   this.params.funcaptchaApiJSSubdomain,
                     }
                 case 'GeeTestTask':
                     return {
@@ -254,6 +260,7 @@ var Anticaptcha = function(clientKey) {
                         gt:                         this.params.websiteKey,
                         challenge:                  this.params.websiteChallenge,
                         geetestApiServerSubdomain:  this.params.geetestApiServerSubdomain,
+                        geetestGetLib:              this.params.geetestGetLib,
 
                         proxyType:                  this.params.proxyType,
                         proxyAddress:               this.params.proxyAddress,
@@ -270,12 +277,14 @@ var Anticaptcha = function(clientKey) {
                         gt:                         this.params.websiteKey,
                         challenge:                  this.params.websiteChallenge,
                         geetestApiServerSubdomain:  this.params.geetestApiServerSubdomain,
+                        geetestGetLib:              this.params.geetestGetLib,
                     }
                 default: // NoCaptchaTask
                     return {
                         websiteURL:     this.params.websiteUrl,
                         websiteKey:     this.params.websiteKey,
                         websiteSToken:  this.params.websiteSToken,
+                        recaptchaDataSValue:  this.params.recaptchaDataSValue,
                         proxyType:      this.params.proxyType,
                         proxyAddress:   this.params.proxyAddress,
                         proxyPort:      this.params.proxyPort,
@@ -416,8 +425,16 @@ var Anticaptcha = function(clientKey) {
             this.params.websiteSToken = value;
         };
 
+        this.setRecaptchaDataSValue = function (value) {
+            this.params.recaptchaDataSValue = value;
+        };
+
         this.setWebsitePublicKey = function (value) {
             this.params.websitePublicKey = value;
+        };
+
+        this.setFuncaptchaApiJSSubdomain = function (value) {
+            this.params.funcaptchaApiJSSubdomain = value;
         };
 
         this.setWebsiteChallenge = function (value) {
@@ -426,6 +443,10 @@ var Anticaptcha = function(clientKey) {
 
         this.setGeetestApiServerSubdomain = function (value) {
             this.params.geetestApiServerSubdomain = value;
+        };
+
+        this.setGeetestGetLib = function (value) {
+            this.params.geetestGetLib = value;
         };
 
         this.setProxyType = function (value) {
